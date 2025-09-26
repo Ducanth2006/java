@@ -4,7 +4,8 @@ public class nd {
         Scanner nhap=new Scanner(System.in);
         int a;
         a=nhap.nextInt();
-        System.out.println("tôi đã print ra là"+a);
+        System.out.println("i will print/n"+a);
+        nhap.close();
 
         
 
