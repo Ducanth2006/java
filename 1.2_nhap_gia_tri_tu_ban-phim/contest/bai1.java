@@ -8,6 +8,7 @@ public class bai1 {
         System.out.println(a);
         System.out.println("hello world");
         System.out.println("Hello 28 Teach ");
+        nhap.close();
 
 
     }

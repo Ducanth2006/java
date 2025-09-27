@@ -9,6 +9,7 @@ public class nd {
         nhap.close();*/
         // char b =nhap.nextLine().charAt(0); input a one character
         // System.out.println("i will print " +b);
+        nhap.close();
         
 
 

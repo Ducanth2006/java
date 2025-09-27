@@ -13,6 +13,7 @@ public class chialaysothuc{
         // System.out.println(g);result wil equal -549688798 wrong result to fix we need assign float to d and change int g = equal long g =
         long g= (long)d*f;
         System.out.println(g);// the correct result is 944343116322
+        nhap.close();
 
 
     }
