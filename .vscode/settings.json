@@ -1,10 +1,12 @@
 {
   "java.project.sourcePaths": [
+    "1.5_toan_tu_tang_giam",
+    "1.4_cac_ham_toan",
     "1.3_toan-tu",
     "1.2_nhap_gia_tri_tu_ban-phim",
     "1.1_kieu_du_lieu_khai_bao_bien",
     "0.0_a_code_a_day",
-    "1.4_cac_ham_toan"
+    "1.6_if_else"
   ],
   "java.debug.settings.onBuildFailureProceed": true
 }
