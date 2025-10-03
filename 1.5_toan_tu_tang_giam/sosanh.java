@@ -1,4 +1,4 @@
-import java.util.Scanner;
+
 public class sosanh {
     public static void main(String[] Agrs){
         int a= 100;

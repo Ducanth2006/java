@@ -10,7 +10,7 @@ public class nd {
         else  {
             System.out.println("no");
 
-        };
+        }nhap.close();
     }
     
 }
