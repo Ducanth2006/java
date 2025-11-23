@@ -1,0 +1,498 @@
+ I
+  Giải Thích "Cùng Một Package"
+Trong Java, package (gói) có thể được hiểu như một thư mục hoặc một nhóm tổ chức dùng để chứa các lớp (class) có liên quan đến nhau.
+
+1. Mục đích chính
+Tổ chức code: Giúp quản lý hàng trăm hoặc hàng ngàn file code (class) một cách có hệ thống.
+
+Phòng tránh xung đột tên: Cho phép hai lập trình viên tạo ra hai lớp có tên giống nhau (ví dụ: UserService.java), miễn là chúng nằm trong các package khác nhau.
+
+Lớp 1: com.company.api.UserService
+
+Lớp 2: com.company.database.UserService
+
+Kiểm soát truy cập: Xác định phạm vi truy cập cho các thành phần (biến, phương thức) được đánh dấu là default (không có từ khóa) hoặc protected.
+
+II
+Cách tạo method 
+{[Phạm vi truy cập]} + {[Từ khóa tùy chọn]} + {[Kiểu dữ liệu trả về]} + {[Tên phương thức]} +( [Tham số] ) \{ }
+1. Phạm vi truy cập (Access Modifier)
+Xác định nơi nào có thể gọi (sử dụng) phương thức này.
+
+Ví dụ:
+
+public: Mọi nơi đều có thể truy cập (Phổ biến nhất).
+
+private: Chỉ có thể truy cập bên trong lớp chứa nó.
+
+protected: Truy cập trong cùng package và các lớp con.
+
+ 2. Từ khóa tùy chọn (Optional Keyword)
+Các từ khóa đặc biệt như static hoặc final.
+
+static: Cho phép bạn gọi phương thức mà không cần tạo đối tượng của lớp đó. (Ví dụ: phương thức main).
+
+final: Ngăn không cho các lớp con ghi đè (override) phương thức này.
+
+3. Kiểu dữ liệu trả về (Return Type)
+Xác định loại dữ liệu mà phương thức sẽ trả lại sau khi thực hiện xong.
+
+Ví dụ: int, String, double, hoặc một tên lớp khác.
+
+Nếu phương thức không trả về bất kỳ dữ liệu nào (chỉ thực hiện hành động), bạn phải dùng từ khóa void.
+
+4. Tên phương thức (Method Name)
+Tên dùng để gọi phương thức. Tên phương thức nên bắt đầu bằng một động từ (ví dụ: tinhTong, hienThiThongTin).
+
+Quy tắc đặt tên: Nên dùng kiểu camelCase (ví dụ: tinhToanGiaTri).
+
+5. Tham số (Parameters)
+Danh sách các biến mà phương thức cần để hoạt động. Đặt trong cặp dấu ngoặc đơn ().
+
+Mỗi tham số cần có kiểu dữ liệu và tên biến riêng.
+
+Nếu không có tham số nào, vẫn phải để cặp ngoặc đơn rỗng ().
+
+Ví dụ: (int soA, int soB)
+
+6. Nội dung (Body)
+Khối code thực thi nằm trong cặp dấu ngoặc nhọn {}.
+
+7. Câu lệnh return
+Chỉ cần thiết nếu kiểu dữ liệu trả về không phải là void.
+
+Nó dùng để gửi kết quả đã tính toán trở lại nơi gọi phương thức.
+Lưu í :Công thức: chỉ thực thi hành động(vd:print  ), không trả về gì nên dùng void 
+public class TinhToan {
+
+    // Công thức: cộng hai số nguyên và trả về (return) một số nguyên
+    public int tinhTong(int soA, int soB) {
+        int ketQua = soA + soB;
+        return ketQua; // Trả về giá trị của ketQua (kiểu int)
+    }
+
+}
+Không dùng return thì dùng void 
+public class HienThi {
+
+    // Công thức: chỉ thực thi hành động, không trả về gì nên dùng void
+    public void inLoiChao(String ten) {
+        System.out.println("Xin chào, " + ten + "!");
+        // Không có return
+    }
+}
+III
+1. Sử dụng System.out.printf() (Tương đương nhất)
+Phương thức này tương đương với việc in ra màn hình (như print() trong Python) và cho phép định dạng chuỗi (như F-string).
+
+Công thức / Cú pháp:
+Java
+
+int a = 10;
+System.out.printf("Giá trị của a là: %d%n", a);%n là xuống dòng
+
+IV
+Tuyệt vời\! **Nạp chồng phương thức (Method Overloading)** là một trong hai hình thức chính của **Tính Đa hình (Polymorphism)** trong Java, giúp mã nguồn trở nên linh hoạt và dễ đọc hơn.
+
+## 💡 Nạp chồng Phương thức (Method Overloading) là gì?
+
+Nạp chồng là khả năng cho phép một **lớp (class) duy nhất** có nhiều **phương thức (methods) cùng tên**, miễn là chúng có **chữ ký phương thức (method signature) khác nhau**.
+
+  * **Tính Đa hình Tĩnh (Static Polymorphism):** Java quyết định sẽ gọi phương thức nào dựa trên **chữ ký** của phương thức đó ngay tại thời điểm **biên dịch** (compile time).
+
+-----
+
+## 📜 Điều kiện để Nạp chồng thành công trong Java
+
+Một phương thức được coi là nạp chồng thành công khi:
+
+1.  **Cùng Tên:** Các phương thức phải có **tên giống hệt nhau**.
+2.  **Khác Chữ ký:** Các phương thức phải có **danh sách tham số khác nhau** về:
+      * **Số lượng tham số** (ví dụ: một hàm có 2 tham số, hàm kia có 3 tham số).
+      * **Kiểu dữ liệu của tham số** (ví dụ: một hàm nhận `int`, hàm kia nhận `double`).
+      * **Thứ tự kiểu dữ liệu của tham số** (ví dụ: một hàm nhận `(int, String)`, hàm kia nhận `(String, int)`).
+3.  **Không bắt buộc thay đổi:**
+      * Kiểu trả về (`return type`) có thể giống hoặc khác nhau, nhưng **không phải là điều kiện để nạp chồng**.
+      * Mức độ truy cập (`public`, `private`,...) có thể giống hoặc khác nhau, nhưng **không phải là điều kiện để nạp chồng**.
+
+-----
+
+## 🛠️ Ví dụ minh họa chi tiết trong Java
+
+Giả sử chúng ta muốn tính diện tích, nhưng cho các hình dạng hoặc kiểu dữ liệu khác nhau.
+
+```java
+class TinhToanHinhHoc {
+
+    // 1. Nạp chồng dựa trên SỐ LƯỢNG tham số
+    // Tính diện tích hình vuông/chữ nhật (cần 2 tham số)
+    public int tinhDienTich(int chieuDai, int chieuRong) {
+        System.out.print("Tính diện tích hình chữ nhật (2 số nguyên): ");
+        return chieuDai * chieuRong;
+    }
+
+    // 2. Nạp chồng dựa trên KIỂU DỮ LIỆU tham số
+    // Tính diện tích hình tròn (cần 1 tham số kiểu double)
+    public double tinhDienTich(double banKinh) {
+        System.out.print("Tính diện tích hình tròn (1 số thực): ");
+        return Math.PI * banKinh * banKinh;
+    }
+
+    // 3. Nạp chồng dựa trên THỨ TỰ kiểu dữ liệu tham số (ít dùng)
+    // Dù cùng số lượng và cùng kiểu dữ liệu, thứ tự khác nhau vẫn là nạp chồng
+    public String tinhDienTich(String tenHinh, int kichThuoc) {
+        return tenHinh + " có kích thước: " + kichThuoc;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        TinhToanHinhHoc calculator = new TinhToanHinhHoc();
+
+        // Gọi hàm 1: TinhToanHinhHoc.tinhDienTich(int, int)
+        System.out.println(calculator.tinhDienTich(5, 10));
+
+        // Gọi hàm 2: TinhToanHinhHoc.tinhDienTich(double)
+        System.out.println(calculator.tinhDienTich(3.5));
+
+        // Gọi hàm 3: TinhToanHinhHoc.tinhDienTich(String, int)
+        System.out.println(calculator.tinhDienTich("Hình vuông", 7));
+    }
+}
+```
+
+**Kết quả đầu ra:**
+
+```
+Tính diện tích hình chữ nhật (2 số nguyên): 50
+Tính diện tích hình tròn (1 số thực): 38.48451000647489
+Hình vuông có kích thước: 7
+```
+
+### 🔑 Vai trò của Nạp chồng
+
+Nạp chồng giúp chúng ta:
+
+  * **Tên hàm dễ nhớ hơn:** Chỉ cần nhớ một tên hàm (ví dụ: `tinhDienTich`) thay vì nhiều tên khác nhau (`tinhDienTichChuNhat`, `tinhDienTichTron`).
+  * **Mã nguồn rõ ràng:** Thể hiện rõ rằng các phương thức này thực hiện cùng một loại **hành vi** (tính toán diện tích) nhưng với các loại **đầu vào** khác nhau.
+
+V
+
+
+
+## 💡 Ghi đè (Method Overriding) trong Java
+
+Ghi đè là khi một **Lớp Con (Subclass)** cung cấp một triển khai cụ thể cho một phương thức đã được định nghĩa trong **Lớp Cha (Superclass)**.
+
+### 📜 Công thức Ghi đè
+
+1.  **Quan hệ Kế thừa:** Bắt buộc phải có lớp con kế thừa lớp cha (sử dụng từ khóa `extends`).
+2.  **Cùng Chữ ký:** Phương thức ghi đè phải có **tên**, **kiểu trả về** (hoặc kiểu đồng biến), và **danh sách tham số** giống hệt phương thức trong lớp cha.
+3.  **Quy tắc truy cập:** Mức độ truy cập của phương thức ghi đè trong lớp con **không được hẹp hơn** lớp cha (ví dụ: nếu lớp cha là `protected`, lớp con có thể là `protected` hoặc `public`, nhưng không được là `private`).
+4.  **Annotation `@Override`:** Nên sử dụng annotation này để báo cho trình biên dịch biết rằng đây là một phương thức ghi đè. Nếu bạn vô tình làm sai chữ ký, trình biên dịch sẽ báo lỗi.
+
+-----
+
+## 🛠️ Ví dụ Biểu diễn Ghi đè bằng Java
+
+Chúng ta sẽ tạo hai lớp: `PhuongTien` (Lớp Cha) và `OTo` (Lớp Con).
+
+### 1\. Lớp Cha (Superclass)
+
+Lớp `PhuongTien` định nghĩa một phương thức chung (`chay()`).
+
+```java
+class PhuongTien {
+    // Phương thức chung được định nghĩa trong lớp cha
+    public void chay() {
+        System.out.println("Phương tiện đang chạy trên đường.");
+    }
+}
+```
+
+### 2\. Lớp Con (Subclass) - Thực hiện Ghi đè
+
+Lớp `OTo` kế thừa từ `PhuongTien` và cung cấp một cách chạy **riêng biệt**.
+
+```java
+class OTo extends PhuongTien {
+
+    // Ghi đè phương thức chay() của lớp cha
+    @Override
+    public void chay() {
+        // Triển khai mới, khác so với lớp cha
+        System.out.println("Ô tô đang chạy với 4 bánh.");
+    }
+
+    // Phương thức riêng của lớp con
+    public void bomCoi() {
+        System.out.println("Bip Bip!");
+    }
+}
+```
+
+### 3\. Lớp Chính (Main) - Chứng kiến Đa hình
+
+Đây là nơi bạn thấy sức mạnh của Ghi đè thông qua tính đa hình động (Runtime Polymorphism).
+
+```java
+public class DemoGhiDe {
+    public static void main(String[] args) {
+        // Khai báo kiểu tham chiếu là lớp cha, nhưng tạo đối tượng là lớp con
+        PhuongTien pt = new OTo();
+
+        // Phương thức được gọi là của đối tượng THỰC TẾ (lớp OTo),
+        // mặc dù tham chiếu là PhuongTien.
+        // Điều này xảy ra nhờ Ghi đè.
+        pt.chay();
+
+        // Kết quả sẽ là: Ô tô đang chạy với 4 bánh.
+    }
+}
+```
+
+-----
+
+## 🔑 Khi nào Ghi đè được Quyết định?
+
+  * **Thời gian Biên dịch (Compile Time):** Trình biên dịch chỉ kiểm tra xem phương thức `chay()` có tồn tại trong kiểu tham chiếu (`PhuongTien`) hay không.
+  * **Thời gian Chạy (Run Time):** Máy ảo Java (JVM) sẽ quyết định gọi phiên bản `chay()` nào dựa trên **kiểu thực tế** của đối tượng (`new OTo()`). Đây được gọi là **Dynamic Method Dispatch**.
+
+Cơ chế này giúp bạn viết mã linh hoạt, cho phép bạn xử lý các đối tượng thuộc các lớp con khác nhau thông qua một tham chiếu chung của lớp cha, nhưng vẫn đảm bảo mỗi đối tượng thực hiện hành vi riêng của nó.
+
+VI
+
+Tuyệt vời\! Tính **Trừu Tượng (Abstraction)** trong Java được thực hiện chủ yếu qua hai cơ chế: **Abstract Class (Lớp Trừu Tượng)** và **Interface (Giao diện)**.
+
+Tôi sẽ sử dụng **Abstract Class** để giải thích cách nó hoạt động, vì nó thể hiện rõ việc che giấu chi tiết và chỉ hiển thị những thông tin cần thiết.
+
+-----
+
+## 👻 Ví dụ Java Code về Tính Trừu Tượng (Abstract Class)
+
+Ví dụ này mô tả một Lớp Trừu Tượng chung là `HinhHoc` (Hình Học) định nghĩa hành vi chung, và các lớp cụ thể (như `HinhTron`, `HinhChuNhat`) sẽ triển khai chi tiết tính toán.
+
+### 1\. 📝 Định nghĩa Lớp Trừu Tượng
+
+Lớp `HinhHoc` định nghĩa "hợp đồng" rằng mọi hình học đều phải có cách tính diện tích và chu vi, nhưng **không quan tâm cách tính đó như thế nào** (vì mỗi hình sẽ khác nhau).
+
+```java
+// File: HinhHoc.java
+
+abstract class HinhHoc {
+    // Thuộc tính chung: Màu sắc
+    private String mauSac;
+
+    // Phương thức chung (đã được triển khai): Dùng cho mọi hình
+    public void setMauSac(String mau) {
+        this.mauSac = mau;
+        System.out.println("Thiết lập màu sắc là: " + mau);
+    }
+
+    // Phương thức trừu tượng (chưa có triển khai - BẮT BUỘC lớp con phải ghi đè)
+    // Người dùng chỉ cần biết TỒN TẠI hàm tinhDienTich()
+    public abstract double tinhDienTich();
+
+    // Phương thức trừu tượng thứ hai
+    public abstract double tinhChuVi();
+}
+```
+
+**Giải thích:**
+
+  * Từ khóa **`abstract`** làm cho lớp và các phương thức này trở nên trừu tượng.
+  * Phương thức `tinhDienTich()` và `tinhChuVi()` là trừu tượng, tức là nó **chỉ là lời hứa** (chưa có code logic).
+
+-----
+
+### 2\. 📐 Triển khai Lớp Cụ Thể (Ghi đè chi tiết)
+
+Lớp `HinhTron` **kế thừa** `HinhHoc` và phải **cung cấp triển khai chi tiết** cho các phương thức trừu tượng.
+
+```java
+// File: HinhTron.java
+
+class HinhTron extends HinhHoc {
+    private double banKinh; // Chi tiết riêng của Hình Tròn
+
+    public HinhTron(double banKinh) {
+        this.banKinh = banKinh;
+    }
+
+    // BẮT BUỘC phải ghi đè (triển khai) phương thức trừu tượng tinhDienTich()
+    @Override
+    public double tinhDienTich() {
+        // Chi tiết CỤ THỂ của Hình Tròn (ẩn với người dùng HinhHoc)
+        return Math.PI * banKinh * banKinh;
+    }
+
+    // BẮT BUỘC phải ghi đè phương thức trừu tượng tinhChuVi()
+    @Override
+    public double tinhChuVi() {
+        return 2 * Math.PI * banKinh;
+    }
+}
+```
+
+-----
+
+### 3\. 🧪 Lớp Chính (Sử dụng Tính Trừu Tượng)
+
+Người dùng chỉ cần biết rằng đối tượng `HinhTron` có thể `tinhDienTich()` mà **không cần biết công thức tính toán bên trong** nó là gì.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Khai báo kiểu tham chiếu là lớp trừu tượng (HinhHoc), đối tượng thực tế là HinhTron
+        HinhHoc hinh = new HinhTron(7.0);
+
+        // 1. Dữ liệu/Hành vi chung được sử dụng
+        hinh.setMauSac("Xanh");
+
+        // 2. Gọi phương thức trừu tượng:
+        // Người dùng chỉ cần biết gọi tinhDienTich()
+        // Họ KHÔNG cần biết công thức (Math.PI * r * r)
+        double dienTich = hinh.tinhDienTich();
+        double chuVi = hinh.tinhChuVi();
+
+        System.out.println("Diện tích là: " + dienTich);
+        System.out.println("Chu vi là: " + chuVi);
+    }
+}
+```
+
+**Kết quả:**
+
+```
+Thiết lập màu sắc là: Xanh
+Diện tích là: 153.93804002589985
+Chu vi là: 43.982297150257104
+```
+
+### Tổng kết: Trừu Tượng đã được áp dụng như thế nào?
+
+1.  **Hiển thị cái cần thiết:** Lớp `HinhHoc` chỉ hiển thị hai hành vi quan trọng là `tinhDienTich()` và `tinhChuVi()`.
+2.  **Ẩn chi tiết phức tạp:** Công thức tính toán $\pi r^2$ và $2\pi r$ **bị ẩn** bên trong lớp `HinhTron` và không cần phải lộ ra ngoài khi người dùng sử dụng biến `hinh` (kiểu `HinhHoc`).
+
+VII
+
+
+Tuyệt vời\! Interface (Giao diện) là cách thức khác để thực hiện **Tính Trừu Tượng (Abstraction)** trong Java, với một triết lý hơi khác so với Abstract Class.
+
+## 👻 Ví dụ Java Code về Tính Trừu Tượng (Interface)
+
+Interface định nghĩa một **Bộ Quy Tắc (Contract)** về những hành vi mà một lớp **phải** có, nhưng không cung cấp bất kỳ chi tiết triển khai nào.
+
+### 1\. 📝 Định nghĩa Interface
+
+Interface `DieuKhien` (Điều Khiển) định nghĩa các hành động cơ bản mà mọi thiết bị phải có.
+
+```java
+// File: DieuKhien.java
+
+// Interface chỉ chứa khai báo phương thức (không có phần triển khai)
+interface DieuKhien {
+
+    // Phương thức trừu tượng (mặc định là public abstract)
+    // Mọi lớp triển khai phải có hành vi này
+    void bat();
+
+    void tat();
+
+    void tangAmLuong(int mucTang);
+
+    // Interface KHÔNG cho phép khai báo thuộc tính dữ liệu thông thường
+    // (như private int trangThai;).
+    // Các trường (field) trong interface mặc định là public static final (hằng số).
+}
+```
+
+-----
+
+### 2\. 📺 Triển khai Interface (Implement)
+
+Lớp `Tivi` **triển khai** (implements) Interface `DieuKhien` và phải cung cấp logic cụ thể cho tất cả các phương thức được khai báo.
+
+```java
+// File: Tivi.java
+
+class Tivi implements DieuKhien {
+    private boolean dangBat = false;
+    private int amLuong = 10;
+
+    // BẮT BUỘC triển khai phương thức bat()
+    @Override
+    public void bat() {
+        dangBat = true;
+        System.out.println("Tivi đã được BẬT.");
+    }
+
+    // BẮT BUỘC triển khai phương thức tat()
+    @Override
+    public void tat() {
+        dangBat = false;
+        System.out.println("Tivi đã được TẮT.");
+    }
+
+    // BẮT BUỘC triển khai phương thức tangAmLuong()
+    @Override
+    public void tangAmLuong(int mucTang) {
+        if (dangBat) {
+            this.amLuong += mucTang;
+            System.out.println("Tăng âm lượng lên: " + this.amLuong);
+        } else {
+            System.out.println("Tivi đang tắt, không thể điều chỉnh âm lượng.");
+        }
+    }
+}
+```
+
+-----
+
+### 3\. 🔌 Lớp Chính (Sử dụng Tính Trừu Tượng)
+
+Người dùng chỉ cần biết rằng đối tượng `Tivi` có thể thực hiện các lệnh của Interface `DieuKhien` mà **không cần biết chi tiết logic bên trong** (`dangBat` hay `amLuong` được quản lý thế nào).
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Khai báo kiểu tham chiếu là Interface, đối tượng thực tế là Tivi
+        DieuKhien thietBi = new Tivi();
+
+        System.out.println("--- Thao tác 1: Bật thiết bị ---");
+        thietBi.bat();
+
+        System.out.println("--- Thao tác 2: Tăng âm lượng ---");
+        thietBi.tangAmLuong(5);
+
+        System.out.println("--- Thao tác 3: Tắt thiết bị ---");
+        thietBi.tat();
+
+        System.out.println("--- Thao tác 4: Thử tăng âm lượng khi đang tắt ---");
+        thietBi.tangAmLuong(10); // Logic phức tạp bên trong bị ẩn đi
+    }
+}
+```
+
+**Kết quả:**
+
+```
+--- Thao tác 1: Bật thiết bị ---
+Tivi đã được BẬT.
+--- Thao tác 2: Tăng âm lượng ---
+Tăng âm lượng lên: 15
+--- Thao tác 3: Tắt thiết bị ---
+Tivi đã được TẮT.
+--- Thao tác 4: Thử tăng âm lượng khi đang tắt ---
+Tivi đang tắt, không thể điều chỉnh âm lượng.
+```
+
+### So sánh Interface và Abstract Class trong Trừu Tượng
+
+| Đặc điểm | Interface (Giao diện) | Abstract Class (Lớp Trừu Tượng) |
+| :--- | :--- | :--- |
+| **Mục đích chính** | Định nghĩa **Khả năng/Khung hành vi** (What it can do) | Định nghĩa **Bản chất/Lớp cơ sở** (What it is) |
+| **Triển khai** | Không thể có thuộc tính/phương thức **được triển khai** (trước Java 8). | Có thể chứa các thuộc tính và phương thức **đã được triển khai** (có code logic bên trong). |
+| **Kế thừa** | Một lớp có thể triển khai **nhiều Interface** (`implements I1, I2`). | Một lớp **chỉ có thể kế thừa duy nhất một** Abstract Class (`extends A`). |
+
+Cả hai đều giúp bạn thực hiện tính trừu tượng bằng cách buộc các lớp con phải tuân theo một khuôn mẫu nhất định, nhưng Interface linh hoạt hơn trong việc định nghĩa các khả năng đa dạng cho một lớp.s
