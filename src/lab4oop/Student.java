@@ -3,12 +3,13 @@ package lab4oop;
 public class Student {
     //    thuộc tính
     String fullName;
+
     int namSinh;
     int namHienTai;
 
     //    phương thức
     public void getTuoi() {
-        System.out.println(namHienTai - namSinh);
+        System.out.println(namSinh - namHienTai);
     }
 
     // hàm main
@@ -18,6 +19,7 @@ public class Student {
         st1.namHienTai = 2025;
         st1.namSinh = 2008;
         st1.getTuoi();
+
 
     }
 
