@@ -1,4 +1,4 @@
-package buoi_10_interface;
+package buoi10_interface;
 
 public class Pig implements IAnimal {
     public void keu() {

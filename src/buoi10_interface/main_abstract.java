@@ -1,4 +1,4 @@
-package buoi_10_interface;
+package buoi10_interface;
 
 public class main_abstract extends abstract1 {
     //    khi tao kế thừa abstract của thằng cha thì ta cần định nghĩa hàm abstract của cha nếu ko báo lỗi
@@ -9,6 +9,10 @@ public class main_abstract extends abstract1 {
     }
 
     public static void main(String[] args) {
+        main_abstract test1 = new main_abstract();
+        test1.sua();
+        test1.keudi();
+
 
     }
 }

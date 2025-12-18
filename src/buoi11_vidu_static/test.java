@@ -1,4 +1,4 @@
-package buoi11_vidu;
+package buoi11_vidu_static;
 
 public class test {
     public static void main(String[] args) {

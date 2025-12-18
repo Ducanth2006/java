@@ -1,4 +1,4 @@
-package buoi_10_interface;
+package buoi10_interface;
 
 //Interface được thiết kế để định nghĩa hành động (Action) và
 // các thông số chung (ví dụ: số Pi, mã lỗi...). Nó không quan tâm đến "trạng thái" của đối tượng.

@@ -1,4 +1,4 @@
-package buoi11_vidu;
+package buoi11_vidu_static;
 
 interface ChuyenDoiTienTe {
     // Phương thức trừu tượng (cần lớp con triển khai)
