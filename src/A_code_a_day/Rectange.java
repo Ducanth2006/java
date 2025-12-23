@@ -50,7 +50,7 @@ public class Rectange {
 
         return (h + w) * 2;
     }
-
+// cần nhớ
     public static String capitalize(String color) {
         return color.substring(0, 1).toUpperCase() + color.substring(1).toLowerCase();
     }
