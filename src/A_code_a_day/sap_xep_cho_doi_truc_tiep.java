@@ -14,8 +14,8 @@ public class sap_xep_cho_doi_truc_tiep {
         for (int i = 0; i < n - 1; i++) {
             for (int j = i + 1; j < n; j++) {
                 if (a[i] > a[j]) {
-                    int temp = 0;
-                    temp = a[i];
+//                    int temp = 0;
+                    int temp = a[i];
                     a[i] = a[j];
                     a[j] = temp;
                 }
