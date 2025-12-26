@@ -1,9 +1,7 @@
 2
-B15DCKT150
-NGUYEN NGOC SON
-D15CQKT02-B
-sv3@stu.ptit.edu.vn
-B15DCKT199
-NguyeN   TrONg Tung
-D15CQKT02-B
-sv4@stu.ptit.edu.vn
+INT1155
+Tin hoc co so 2
+2
+SKD1103
+Ky nang tao lap Van ban
+1
