@@ -14,6 +14,7 @@ public class danh_sach_sinh_vien_trong_file2 {
         DateTimeFormatter output= DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return date.format(output);
     }
+    // hay này
     static String msv(int i){
         String s = Integer.toString(i);
         while(s.length()<3) s = "0" + s;

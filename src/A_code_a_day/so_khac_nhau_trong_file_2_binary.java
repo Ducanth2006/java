@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class so_khac_nhau_trong_file_2 {
+public class so_khac_nhau_trong_file_2_binary {
     public static void main(String[] args) {
         // Sử dụng TreeMap để tự động sắp xếp các số tăng dần
         Map<Integer, Integer> map = new TreeMap<>();
