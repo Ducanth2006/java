@@ -16,7 +16,7 @@ class sinhVien {
         this.lop_sv = lop_sv;
         this.email = email;
     }
-
+// function con hay dùng
     public static String chuanHoaName(String s) {
         String[] mang = s.split("\\s+");
         StringBuilder sb = new StringBuilder();
