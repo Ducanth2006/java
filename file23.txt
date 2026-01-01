@@ -1,13 +1,16 @@
 3
- ha Thi kieu     anh
-7
-6
-7
-Pham    THI  HAO
-6
-7
-6
-Nguyen bao nam
-7
-6
-7
+Nguyen Van A
+12/12/1994
+3.5
+7.0
+5.5
+Nguyen Van B
+1/9/1994
+7.5
+9.5
+9.5
+Nguyen Van C
+6/7/1994
+8.5
+9.5
+8.5
