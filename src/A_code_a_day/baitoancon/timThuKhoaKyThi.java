@@ -1,9 +1,7 @@
 package A_code_a_day.baitoancon;
 
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 class thiSinh {
     String id;
@@ -23,6 +21,14 @@ class thiSinh {
         this.mon3 = mon3;
         this.tongDiem = mon1 + mon2 + mon3;
     }
+    public String getId(){
+        return id;
+    }
+
+    public String toString(){
+        return id+" "+name+" "+bd+" "+tongDiem;
+    }
+
 
     public double getTongDiem() {
         return tongDiem;
@@ -48,10 +54,17 @@ public class timThuKhoaKyThi {
             double mon3 = Double.parseDouble(sc.nextLine());
             ds.add(new thiSinh(id, name, bd, mon1, mon2, mon3));
         }
+        // đầu tiên là tìm điểm max nhé
         Double diemMax = ds.stream().max(Comparator.comparing(thiSinh::getTongDiem))
-                .map(thiSinh::getTongDiem)// thằng này để lấy nhé
+                .map(thiSinh::getTongDiem)// thằng này để lấy nhé nếu ko nó sẽ là optional
                 .orElse(0.0);// bắt buộc phải có thằng này để kết thúc
-        
+        // lưu các đôi tượng thỏa mãn điều kiễn vào list mới . nớ nhé filter dùng cái arrow function nhé
+        List<thiSinh> dsloc=ds.stream().filter(thiSinh -> thiSinh.getTongDiem()==diemMax)
+                .collect(Collectors.toList());// phải có thằng này để lưu nó vào list nhé
+        dsloc.sort(Comparator.comparing(thiSinh::getId));
+        for (thiSinh x:dsloc){
+            System.out.println(x);
+        }
     }
 
 }
