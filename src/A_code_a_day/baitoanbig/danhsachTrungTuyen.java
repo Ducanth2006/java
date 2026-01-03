@@ -138,6 +138,7 @@ public class danhsachTrungTuyen {
             for (student1 x : ds) {
                 System.out.println(x + student1.xetKetQua(diemChuan, x.tongDiem));
             }
+            
 
         } catch (FileNotFoundException e) {
 
