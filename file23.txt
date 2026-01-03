@@ -1,16 +1,19 @@
-3
-Nguyen Van A
-12/12/1994
-3.5
-7.0
-5.5
-Nguyen Van B
-1/9/1994
-7.5
-9.5
-9.5
-Nguyen Van C
-6/7/1994
-8.5
-9.5
-8.5
+4
+B16DCCN011
+Nguyen Trong Duc Anh
+D16CNPM1
+sv1@stu.ptit.edu.vn
+B15DCCN215
+To Ngoc Hieu
+D15CNPM3
+sv2@stu.ptit.edu.vn
+B15DCKT150
+Nguyen Ngoc Son
+D15CQKT02-B
+sv3@stu.ptit.edu.vn
+B15DCKT199
+Nguyen Trong Tung
+D15CQKT02-B
+sv4@stu.ptit.edu.vn
+1
+Ke toan
