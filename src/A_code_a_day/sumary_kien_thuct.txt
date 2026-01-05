@@ -1,0 +1,204 @@
+ta muốn làm tròn x=12345 đơn hàng trăm , và làm tròn lên ta làm như sau
+math.ceil(x/100)*100 :tức là chia 100 để lấy 2 số sau dấu phẩy và làm tròn lên sau đó nhân lại
+
+=== xử lý chuẩn hóa phổ biến  ===
+hàm chuẩn hóa định dạng theo ngày  :
+ private String chuanHoaNgay(String bd) {
+        DateTimeFormatter input = DateTimeFormatter.ofPattern("d/M/yyyy");
+        LocalDate date = LocalDate.parse(bd, input);
+        DateTimeFormatter output = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return date.format(output);
+
+    }
+
+hàm chuẩn hóa tên :
+ private String chuanHoaName(String x) {
+        String[] tho = x.trim().toLowerCase().split("\\s+");
+        StringBuilder sb = new StringBuilder();
+        for (String k : tho) {
+            String wordChuan = k.substring(0, 1).toUpperCase() + k.substring(1).toLowerCase();
+            sb.append(wordChuan).append(" ");
+        }
+        return sb.toString().trim();
+    }
+
+=== thao tác với time
+xử lý tính ngày nhưng bài này nếu kiểu trong 1 ngày nó sẽ tính là 0 ngày nhé vì vậy cần cộng thêm 1
+public static Long tinhSongayo(String x, String y){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate ngayNhan=LocalDate.parse(x,formatter);
+        LocalDate ngayRa=LocalDate.parse(y,formatter);
+        return ChronoUnit.DAYS.between(ngayNhan,ngayRa);
+    }
+kết hợp ngày và giờ
+// hàm kết hơpj h và ngày để lấy được thời gian sớm nhát
+public LocalDateTime gophourvaday() {
+        LocalDate d = LocalDate.parse(this.ngayThi, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        LocalTime h = LocalTime.parse(this.hThi, DateTimeFormatter.ofPattern("HH:mm"));
+        return d.atTime(h);
+    }
+đây là gộp lại nhé đang lẽ phải tạo cái DateTimeFormatter cho ngày và h nhé kk
+=== xử lý sinh ===
+sinh id hay mã nhân viên ....
+ private String sinhId(int i) {
+        return String.format("PH%02d", i);
+    }
+Ép kiểu sang local date
+ // bài toán con hay này chuyển về localdate
+    public LocalDate getBd() {
+        DateTimeFormatter input = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate date = LocalDate.parse(bd, input);
+        return date;
+    }
+do gioVao và gioRa đã định dạng chuẩn     
+this.gioVao = LocalTime.parse(gioVao);
+this.gioRa = LocalTime.parse(gioRa);
+================
+Xử lý với h này hay phết dùng duration nhé
+ private String tinhTimeChoi(LocalTime in, LocalTime out) {
+        Duration duration = Duration.between(in, out);
+
+        // Bước 1: Lấy tổng số phút (Java 8 hỗ trợ tốt hàm này)
+        long totalMinutes = duration.toMinutes();
+
+        // Bước 2: Dùng toán học để tách giờ và phút
+        long h = totalMinutes / 60;   // Lấy phần nguyên là số giờ
+        long m = totalMinutes % 60;   // Lấy phần dư là số phút lẻ
+
+        return String.format("%d gio %d phut", h, m);
+    }
+
+private long tinhSoPhut(LocalTime in, LocalTime out) {
+        Duration duration = Duration.between(in, out);
+        long k = duration.toMinutes();
+        return k;
+    }
+
+
+
+
+
+=== xử lý với sâu
+lấy 2 chữ số sau dấu phẩy
+String.format("%.2f", tongDiem)
+=== tính ước chung lớn nhất
+ public static long gcd(long a, long b) {
+        while (b != 0) {
+            long r = a % b;
+            a = b;
+            b = r;
+        }
+        return a;
+    }
+để đếm xem số đó có bao nhiêu chữ số
+a.toString().length(): ép ra String sử dụng length
+=== xử lý mới bài nhân với 0.25 hay 30% xử lý với số double này thường hay sai out put lắm
+public static long tinhThuong(long luongCoBan, int soNgayCong) {
+        long luong = luongCoBan * soNgayCong;
+        if (soNgayCong >= 25) return luong / 5;   // 20%
+        if (soNgayCong >= 22) return luong / 10;  // 10%
+        return 0;
+    }
+==== chủ đề với map
+ map.put(x,map.getOrDefault(x, 0) + 1);
+ map.get(key) trả về value
+ map.put(key,value),key tồn tại thay thế value , nếu chưa thêm mới
+getOfdefault(m1,m2) nếu m1 tồn tại trả về m1, nếu ko tồn tại trả về mặc định m2
+đoạn trên ta thấy là value = getOrDefault +1 nếu có trả về value +1 , nếu ko trả về 0+ với 1
+hashmap kết hợp với contains sẽ giúp truy vấn siêu nhanh
+treemap nó sắp xếp theo thứ tự từ điển
+ chuoi1.keySet() nó sẽ trả về key trong map
+ === thao tác với file
+  while (reader.hasNext()) {
+                 if (reader.hasNextInt()) {
+                     sum += reader.nextInt();
+                 } else {
+                     reader.next();
+                 }
+             }
+Đầu tiên cho vòng while nếu có tử thì cứ tiêp tục đi sâu vào trong sẽ có if else kiểm tra xem có phải số ko nếu số thì cho cộng '
+nếu là chữ thì reader.next(); để nhảy tới ký tự tiếp theo
+=== mới bài ko cho test case thì sẽ phải làm như này
+while(sc.hasNextLine()){
+            String id=sc.nextLine();
+            String name=sc.nextLine();
+            String lop=sc.nextLine();
+            String email=sc.nextLine();
+            ds.add(new sinhVien6(id,name,lop,email));
+
+        }
+Cứ có dòng là đọc
+=== hợp và giao
+Giao
+// Giả sử có list1 và list2
+Set<Integer> set = new HashSet<>(list2); // Chuyển list2 sang Set để tìm kiếm cực nhanh
+list1.retainAll(set); // Lọc list1 chỉ giữ lại những phần tử có trong set thay đổi list 1 luôn
+part2
+HashSet<Long> setB = new HashSet<>(bN);// dùng hashset để tăng tốc độ của contains
+        TreeSet<Long> giaoNhau = new TreeSet<>();// dùng thằng này để giúp sắp xếp lại theo thứ tự tăng dần
+        for (Long x : aN) {
+            if (setB.contains(x)) {
+                giaoNhau.add(x);
+            }
+        }
+        return new ArrayList<>(giaoNhau);
+    }
+
+Hợp
+TreeSet<Long> hopnhau = new TreeSet<>(A);// Cho tất cả A vào trước
+        hopnhau.addAll(B);// Sau đó "hợp" thêm tất cả B vào
+        return new ArrayList<>(hopnhau);
+===tạo biến ở ngoài
+int stt = 1;
+        for (student6 x : ds) {
+            System.out.println(stt + " " + x);
+            stt += 1;
+        }
+=== có thể có 1 chữ số thập phân nếu là sô thập phân or 0
+public static String formating(double x) {
+        if (x == (long) x) {
+            return String.format("%d", (long) x);
+        } else {
+            return String.format("%.1f", x);
+        }
+    }
+=== bài toán tính điểm chuẩn khi có chỉ tiêu
+// tim diem chuan Ham mới
+    public static double xacDinhDiemChuan(ArrayList<student1> candidates, int chiTieu) {
+        // Kiểm tra nếu danh sách trống hoặc chỉ tiêu không hợp lệ
+        if (candidates == null || candidates.isEmpty() || chiTieu <= 0) {
+            return 0.0;
+        }
+        return candidates.stream()
+                // 1. Sắp xếp đối tượng theo điểm giảm dần
+                .sorted(Comparator.comparingDouble(student1::getTongDiem).reversed())
+                // 2. Nhảy đến vị trí người cuối cùng của chỉ tiêu
+                .skip(chiTieu - 1)
+                // 3. Tóm lấy người đó (đối với findFirst, đây là người đầu tiên nó thấy sau khi skip)
+                .findFirst()// thằng này kiểu như để dùng ấy
+                // 4. Lấy riêng con số điểm từ đối tượng người đó
+                .map(student1::getTongDiem)
+                // 5. Nếu không tìm thấy (ví dụ chỉ tiêu 10 nhưng chỉ có 5 người) thì trả về 0.0
+                .orElse(0.0);
+    }
+=== bài toán con tính xử lý rank nếu có điểm bằng nhau =>rank=nhau suy ra thằng sau đó rank phải + thêm vd a rank1 b rank1 và c phải rank 3
+ds.sort(Comparator.comparing(Student5::getDiemTb).reversed());
+            // xư ly rank trung nhau cần học
+            // quá tỉnh khi tao đặt top default =0
+            for (int i=0;i<ds.size();i++){
+                if(i>0&& ds.get(i).diemTb==ds.get(i-1).diemTb){
+                    ds.get(i).top=ds.get(i-1).top;
+                }
+                else{
+                    ds.get(i).top=i+1;// tại sao +i bởi vì tao đã sắp xếp theo giảm dần gpa rồi nhé
+                }
+            }
+=== bài toán con xử lý điểm mãx bằng nhau
+// đầu tiên là tìm điểm max nhé
+Double diemMax = ds.stream().max(Comparator.comparing(thiSinh::getTongDiem))
+                .map(thiSinh::getTongDiem)// thằng này để lấy nhé nếu ko nó sẽ là optional
+                .orElse(0.0);// bắt buộc phải có thằng này để kết thúc
+        // lưu các đôi tượng thỏa mãn điều kiễn vào list mới . nớ nhé filter dùng cái arrow function nhé
+        List<thiSinh> dsloc=ds.stream().filter(thiSinh -> thiSinh.getTongDiem()==diemMax)
+                .collect(Collectors.toList());// phải có thằng này để lưu nó vào list nhé
+        dsloc.sort(Comparator.comparing(thiSinh::getId));

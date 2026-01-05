@@ -44,6 +44,7 @@ class product2 {
     public double getGiaBanLe() {
         return giaBan;
     }
+    //làm tròn lên đầu tiên ta phải chia cho nó khoảng dv cần làm tròn
 
     private double lamTronDen100(double x) {
         return Math.ceil(x / 100) * 100;

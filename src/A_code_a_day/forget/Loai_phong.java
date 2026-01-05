@@ -1,4 +1,4 @@
-package A_code_a_day;
+package A_code_a_day.forget;
 
 import java.io.File;
 import java.io.IOException;

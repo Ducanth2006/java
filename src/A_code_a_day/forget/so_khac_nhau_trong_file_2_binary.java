@@ -1,4 +1,4 @@
-package A_code_a_day;
+package A_code_a_day.forget;
 
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
@@ -24,7 +24,7 @@ public class so_khac_nhau_trong_file_2_binary {
 
                 // 3. Cập nhật số lần xuất hiện vào Map
                 // Nếu x đã tồn tại, tăng giá trị lên 1. Nếu chưa, đặt là 1.
-                map.put(x,map.getOrDefault(x, 0) + 1);
+                map.put(x, map.getOrDefault(x, 0) + 1);
             }
 
             // Đóng luồng sau khi dùng xong
