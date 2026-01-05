@@ -43,15 +43,13 @@ public class LietKeSinhVienTheoLop {
         int q = Integer.parseInt(sc.nextLine());
         for (int i = 0; i < q; i++) {
             String lopQ = sc.nextLine();
-            //Map<String, List<sinhVien7>> mapTheoLop = ds.stream()
-            //                .collect(Collectors.groupingBy(sinhVien7::getLop)); cái này tối ưu hơn rất nhiều key là
-            //                 kết quả của hàm sinhVien7::getLop ,
-            //                value tự động được phân loại theo key
+
             List<sinhVien7> dslop = ds.stream().filter(sinhVien7 -> lopQ.equals(sinhVien7.getLop())).collect(Collectors.toList());
             System.out.printf("DANH SACH SINH VIEN LOP %s:", lopQ);
             System.out.println();
             for (sinhVien7 x : dslop) {
                 System.out.println(x);
+                System.out.println();
             }
         }
     }
