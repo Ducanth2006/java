@@ -10,7 +10,67 @@ hàm chuẩn hóa định dạng theo ngày  :
         return date.format(output);
 
     }
+hàm chuẩn hóa theo giờ
+private String chuanHoaGio(String time) {
+    // Input: H:m:s (chấp nhận 1 chữ số, ví dụ 8:5:9)
+    DateTimeFormatter input = DateTimeFormatter.ofPattern("H:m:s");
 
+    // Parse chuỗi thành LocalTime
+    LocalTime localTime = LocalTime.parse(time, input);
+
+    // Output: HH:mm:ss (ép về 2 chữ số, ví dụ 08:05:09)
+    DateTimeFormatter output = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+    return localTime.format(output);
+}
+== sau khi chuẩn hóa xong ta có các bài toán con sau
+bài 1 tính khoảng thời gian
+public String tinhThanhTich(String start, String end) {
+    DateTimeFormatter fmt = DateTimeFormatter.ofPattern("HH:mm:ss");
+    LocalTime batDau = LocalTime.parse(start, fmt);
+    LocalTime ketThuc = LocalTime.parse(end, fmt);
+
+    // Tính khoảng cách
+    Duration duration = Duration.between(batDau, ketThuc);
+
+    // LƯU Ý JAVA 8: Dùng getSeconds() thay vì toSeconds() (Java 9 mới có)
+    long tongGiay = duration.getSeconds();
+
+    long gio = tongGiay / 3600;
+    long phut = (tongGiay % 3600) / 60;
+    long giay = tongGiay % 60;
+
+    return String.format("%02d:%02d:%02d", gio, phut, giay);
+}
+// Input: "06:00:00", "08:30:45" -> Output: "02:30:45"
+bài 2
+public String tinhGioKetThuc(String gioChieu, long thoiLuongPhut) {
+    LocalTime batDau = LocalTime.parse(gioChieu, DateTimeFormatter.ofPattern("HH:mm"));
+
+    // Java 8 hỗ trợ plusMinutes, plusHours, plusSeconds
+    // Nó tự động xử lý việc 23:00 + 60p = 00:00
+    LocalTime ketThuc = batDau.plusMinutes(thoiLuongPhut);
+
+    return ketThuc.format(DateTimeFormatter.ofPattern("HH:mm"));
+}
+// Input: "22:30", 90 -> Output: "00:00"
+bai 3
+public long tinhSoPhutChoi(String vao, String ra) {
+// dữ liệu cần chuẩn hóa nhé
+    LocalTime in = LocalTime.parse(vao);
+    LocalTime out = LocalTime.parse(ra);
+
+    // Cách 1: Dùng ChronoUnit (An toàn nhất trên Java 8)
+    long phut = java.time.temporal.ChronoUnit.MINUTES.between(in, out);
+
+    // Nếu qua đêm (ví dụ 23h -> 2h sáng thì phut sẽ bị âm)
+    // Ta cộng thêm 1 ngày (24h * 60p = 1440 phút)
+    if (phut < 0) {
+        phut = phut + 1440;
+    }
+
+    return phut;
+}
 hàm chuẩn hóa tên :
  private String chuanHoaName(String x) {
         String[] tho = x.trim().toLowerCase().split("\\s+");
