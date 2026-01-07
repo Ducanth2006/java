@@ -79,11 +79,11 @@ public class bai_toan_tuyen_sinh {
             double hoa = Double.parseDouble(sc.nextLine());
             double diemUuTien = student2.quetKv(id);//dung
             double tongDiem = ly + hoa + toan * 2;//dung
-            double finalScore = (tongDiem + diemUuTien);
-            String ketqua = student2.ketqua(finalScore);
+            double finalScore = (tongDiem );
+            String ketqua = student2.ketqua(finalScore+diemUuTien);
             ds.add(new student2(id, name, diemUuTien, finalScore, ketqua));
         }
-        ds.sort(Comparator.comparing(student2::getTongDiem).reversed().thenComparing(student2::getId));
+//        ds.sort(Comparator.comparing(student2::getTongDiem).reversed().thenComparing(student2::getId));
         for (student2 x : ds) {
             System.out.println(x);
         }

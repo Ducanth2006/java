@@ -1,6 +1,7 @@
 ta muốn làm tròn x=12345 đơn hàng trăm , và làm tròn lên ta làm như sau
 math.ceil(x/100)*100 :tức là chia 100 để lấy 2 số sau dấu phẩy và làm tròn lên sau đó nhân lại
-
+Tóm lại ko dùng duration nhé lỗi ce đó hãy dùng ChronoUnit.Seconds.between(Local,Local)
+long tongS=ChronoUnit.SECONDS.between(uuTien,realTime); ko dùng duration nhe
 === xử lý chuẩn hóa phổ biến  ===
 hàm chuẩn hóa định dạng theo ngày  :
  private String chuanHoaNgay(String bd) {
@@ -24,6 +25,9 @@ private String chuanHoaGio(String time) {
     return localTime.format(output);
 }
 == sau khi chuẩn hóa xong ta có các bài toán con sau
+Duration.between(FROM, TO);
+from là thời gian bắt đầu nhỏ hơn
+to là thời gian kết thúc , sớm hơn
 bài 1 tính khoảng thời gian
 public String tinhThanhTich(String start, String end) {
     DateTimeFormatter fmt = DateTimeFormatter.ofPattern("HH:mm:ss");
