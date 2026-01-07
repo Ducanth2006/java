@@ -183,7 +183,7 @@ public static String formating(double x) {
     }
 === bài toán con tính xử lý rank nếu có điểm bằng nhau =>rank=nhau suy ra thằng sau đó rank phải + thêm vd a rank1 b rank1 và c phải rank 3
 ds.sort(Comparator.comparing(Student5::getDiemTb).reversed());
-            // xư ly rank trung nhau cần học
+            // xư ly rank trung nhau cần học tôi sai ở đoạn i-1 nhé ko phải i+1 đâu ta so sánh nó với cái đằng trc là top 1 nữa chĩ
             // quá tỉnh khi tao đặt top default =0
             for (int i=0;i<ds.size();i++){
                 if(i>0&& ds.get(i).diemTb==ds.get(i-1).diemTb){
@@ -198,7 +198,7 @@ ds.sort(Comparator.comparing(Student5::getDiemTb).reversed());
 Double diemMax = ds.stream().max(Comparator.comparing(thiSinh::getTongDiem))
                 .map(thiSinh::getTongDiem)// thằng này để lấy nhé nếu ko nó sẽ là optional
                 .orElse(0.0);// bắt buộc phải có thằng này để kết thúc
-        // lưu các đôi tượng thỏa mãn điều kiễn vào list mới . nớ nhé filter dùng cái arrow function nhé
+ // lưu các đôi tượng thỏa mãn điều kiễn vào list mới . nớ nhé filter dùng cái arrow function nhé
         List<thiSinh> dsloc=ds.stream().filter(thiSinh -> thiSinh.getTongDiem()==diemMax)
                 .collect(Collectors.toList());// phải có thằng này để lưu nó vào list nhé
         dsloc.sort(Comparator.comparing(thiSinh::getId));

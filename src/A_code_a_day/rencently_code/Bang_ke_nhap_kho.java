@@ -1,9 +1,6 @@
 package A_code_a_day.rencently_code;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 class product2 {
     String id;
@@ -38,6 +35,9 @@ class product2 {
             tongTien = 0;
         }
         return tongTien;
+    }
+    public long getTienChietKhau(){
+        return tienChietKhau;
     }
 
     private String layMa() {
@@ -86,6 +86,7 @@ public class Bang_ke_nhap_kho {
             }
             ds.get(i).id += product2.sinhId(mapDs.get(ma));
         }
+        ds.sort(Comparator.comparing(product2::getTienChietKhau).reversed());
         for (product2 x : ds) {
             System.out.println(x);
         }
