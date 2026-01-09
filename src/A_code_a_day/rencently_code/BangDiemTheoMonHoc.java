@@ -3,6 +3,7 @@ package A_code_a_day.rencently_code;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 class subject{
     private String maMon;
@@ -89,12 +90,14 @@ class BangDiem2 {
     double diem;
     String tenSV;
     String lop;
-    public BangDiem2(String msv, String maMonHoc, double diem, String tenSV, String lop){
+    String tenMonHoc;
+    public BangDiem2(String msv, String maMonHoc, double diem, String tenSV, String lop,String tenMonHoc){
         this.msv=msv;
         this.maMonHoc=maMonHoc;
         this.diem=diem;
         this.tenSV=tenSV;
         this.lop=lop;
+        this.tenMonHoc=tenMonHoc;
 
     }
     private String kt(double x){
@@ -106,7 +109,7 @@ class BangDiem2 {
         }
     }
     public String toString(){
-        return msv+" "+tenSV+" "+lop+" "+kt(diem);
+        return msv+" "+tenSV+" "+maMonHoc+" "+tenMonHoc+" "+kt(diem);
     }
     public double getDiem(){
         return diem;
@@ -114,14 +117,19 @@ class BangDiem2 {
     public String getMsv(){
         return msv;
     }
+    public String getLop(){
+        return lop;
+    }
 
-
+    public String getMaMonHoc() {
+        return maMonHoc;
+    }
 }
 public class BangDiemTheoMonHoc {
     public static void main(String[] args) throws IOException {
-        Scanner r1= new Scanner(new File("file1.txt"));
-        Scanner r2= new Scanner(new File("file2.txt"));
-        Scanner r3= new Scanner(new File("file3.txt"));
+        Scanner r1= new Scanner(new File("SINHVIEN.in"));
+        Scanner r2= new Scanner(new File("MONHOC.in"));
+        Scanner r3= new Scanner(new File("BANGDIEM.in"));
         ArrayList<sinhvien1111> ds= new ArrayList<>();
         int t1=Integer.parseInt(r1.nextLine());
         for(int i=1;i<=t1;i++){
@@ -151,6 +159,7 @@ public class BangDiemTheoMonHoc {
             double diem=Double.parseDouble(mang[2]);
             String nameSv="";
             String lop="";
+            String tenMon=map2.get(maMon);
             for(sinhvien1111 x:ds){
                 if(x.getId().equals(msv)){
                     nameSv=x.getName();
@@ -158,20 +167,23 @@ public class BangDiemTheoMonHoc {
                 }
 
             }
-            ds3.add((new BangDiem2(msv,maMon,diem,nameSv,lop)));
+            ds3.add((new BangDiem2(msv,maMon,diem,nameSv,lop,tenMon)));
         }
-        ds3.sort(Comparator.comparing(BangDiem2::getDiem).reversed().thenComparing(BangDiem2::getMsv));
+        ds3.sort(Comparator.comparing(BangDiem2::getMsv));
+        Map<String,List<BangDiem2>>mapLoc=ds3.stream().collect(Collectors.groupingBy(BangDiem2::getLop));
         int t4=Integer.parseInt(r3.nextLine());
         for(int i=1;i<=t4;i++){
             String q=r3.nextLine();
             //q là maMonHoc
             // đọc thành công
-            System.out.printf("BANG DIEM MON %s:\n",map2.get(q));
-            for(BangDiem2 x:ds3){
-                if(x.maMonHoc.equals(q)){
-                    System.out.println(x);
-                }
+            System.out.printf("BANG DIEM lop %s:\n",q);
+            List<BangDiem2> ds4=mapLoc.get(q);
+            ds4.sort(Comparator.comparing(BangDiem2::getMaMonHoc).thenComparing(BangDiem2::getMsv));
+            for(BangDiem2 x:ds4){
+                System.out.println(x);
+
             }
+
 
         }
 

@@ -9,6 +9,9 @@ INT3983 Ronaldo Cr
 đầu tiên dùng next() sẽ đọc mã , sau đó nextLine sẽ đọc hết tên còn lại nhưng thằng nextLine này nó sẽ đọc cả khoản trống nhé suy ra cần trim
 đọc kỹ đầu bài , cái j nó là 1 với 1 thì hiểu , còn ko thì 1 có thể làm nhiều lần
 cái j ko cần thì đọc cho qua thoi sau đó sử dụng map kiểu xác định nhanh hơn ây
+Hàm này giúp gom nhóm nhé
+Map<String,List<sinhVien>> locSVtheoLop=ds.stream().collect(Collectors.groupingby(sinhvien::getLop)) , nó sẽ trả về nhé get nhe ko phải arrow function đâu nheaaa
+ta xài đưa dữ liệu về dạng local sau đó dùng plus
 === xử lý chuẩn hóa phổ biến  ===
 hàm chuẩn hóa định dạng theo ngày  :
  private String chuanHoaNgay(String bd) {
