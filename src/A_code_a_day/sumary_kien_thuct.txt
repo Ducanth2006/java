@@ -3,6 +3,12 @@ math.ceil(x/100)*100 :tức là chia 100 để lấy 2 số sau dấu phẩy và
 Tóm lại ko dùng duration nhé lỗi ce đó hãy dùng ChronoUnit.Seconds.between(Local,Local)
 long tongS=ChronoUnit.SECONDS.between(uuTien,realTime); ko dùng duration nhe
 để so sánh local time dùng equals nhé
+khi đi thi nhớ là có set map , arraylist , list
+sự kết hợp giữa next() và nextLine() cho ví dụ
+INT3983 Ronaldo Cr
+đầu tiên dùng next() sẽ đọc mã , sau đó nextLine sẽ đọc hết tên còn lại nhưng thằng nextLine này nó sẽ đọc cả khoản trống nhé suy ra cần trim
+đọc kỹ đầu bài , cái j nó là 1 với 1 thì hiểu , còn ko thì 1 có thể làm nhiều lần
+cái j ko cần thì đọc cho qua thoi sau đó sử dụng map kiểu xác định nhanh hơn ây
 === xử lý chuẩn hóa phổ biến  ===
 hàm chuẩn hóa định dạng theo ngày  :
  private String chuanHoaNgay(String bd) {
