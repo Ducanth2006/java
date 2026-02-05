@@ -1,9 +1,8 @@
-package Array_and_hashing;
+package Arrayandhasing;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.concurrent.atomic.AtomicInteger;
 
 class Solution242 {
     public boolean isAnagram(String s, String t) {
