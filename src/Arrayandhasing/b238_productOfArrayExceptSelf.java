@@ -50,9 +50,4 @@ public class b238_productOfArrayExceptSelf {
 //      Về bản chất ta tính pre[i] bằng tích các số trc i tức là [1,2,3,4] pre[2] bằng tích của 1,2 thôi nhé hiểu chưa
 //      Khi đó ans[2] bằng tích của 1 và 2 , và tích sau là suff[3=n-1]*nums[2+1]=4 suy ra ans[2]=2*4 oke chưa
     }
-
-
-
-
-
 }
