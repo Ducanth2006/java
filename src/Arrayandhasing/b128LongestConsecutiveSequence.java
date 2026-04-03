@@ -1,6 +1,8 @@
 package Arrayandhasing;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class b128LongestConsecutiveSequence {
     public  int longestConsecutive(int[] nums) {
@@ -39,6 +41,30 @@ public class b128LongestConsecutiveSequence {
             finalRes=tempRes;
         }
         return finalRes;
+    }
+//  Cách 2 pro hơn dùng hash set nhé
+    public int longestConsecutive2(int[] nums) {
+        Set<Integer> set0= new HashSet<>();
+        // cho vào hashset để sắp xếp và lọc các code thừa
+        for(int i:nums){
+            set0.add(i);
+        }
+        int record=0;
+        for(int i:set0){
+            int tempLength=0;
+            if(!set0.contains(i-1)){
+                tempLength=1;
+                while(set0.contains(i+tempLength)){
+                    tempLength++;
+                }
+                // thay thế bằng hàm Math.max(tempLenght,record)
+                if(tempLength>record){
+                    record=tempLength;
+                }
+            }
+        }
+
+        return record;
     }
 
 
