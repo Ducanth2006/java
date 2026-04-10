@@ -3,19 +3,27 @@ package codePtit;
 import java.util.Scanner;
 
 public class haha {
+    public static boolean checkHLienTuc(char[]mang){
+        for(int i=0;i<mang.length-1;i++){
+            if(mang[i]=='H'&&mang[i+1]=='H'){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static boolean sinhHaha(char []mang){
         int n=mang.length;
         int i=n-2;
-        while(i>=0&&mang[i]=='A'){
+        while(i>=1&&mang[i]=='H'){
+            mang[i]='A';
             i--;
         }
-        if(i<0){
+        if(i<1){
             return false;
         }
         mang[i]='H';
-        for (int j = i + 1; j < n-1; j++) {
-            mang[j] = 'A';
-        }
+
         return true;
     }
 
@@ -26,9 +34,15 @@ public class haha {
             int n=sc.nextInt();
             char [] mangChar= new char[n];
             mangChar[0]='H';
-            for(int h=1;h<n;h++)
+            for(int h=1;h<n-1;h++){
+                mangChar[h]='A';
+            }
+            mangChar[n-1]='A';
             while(true){
-                System.out.println(String.valueOf(mangChar));
+                if(checkHLienTuc(mangChar)){
+                    System.out.println(String.valueOf(mangChar));
+
+                }
                 if(!sinhHaha(mangChar)){
                     break;
                 }
