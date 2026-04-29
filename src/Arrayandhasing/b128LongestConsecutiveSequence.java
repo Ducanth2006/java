@@ -67,5 +67,17 @@ public class b128LongestConsecutiveSequence {
         return record;
     }
 
-
 }
+// giải thích luồng của cách 2
+// ta cho nó vào một hashset để đồng thời sắp xếp và lọc bỏ các phần tử trùng nhau vì trùng nhau thì duyệt cx sẽ bỏ qua
+// cho vào hashset sẽ sắp xếp ngon hơn dùng sort về tốc độ
+// tiếp tục ta khởi tạo một biến kỷ lục , sau đó ta duyệt các phần tử trong set , vì đã sắp xếp lên nó theo thứ tự từ
+// bé -> lớn , khởi tạo một biến tạm thời để ghi chuỗi  sẽ reset sau khi đi qua mỗi phần tử i
+// đứng chặn là thăg if kiểm tra xem i có phải số bắt đầu không , tức trước nó có phần tử nào cách nó 1 đơn vị ko
+// để làm j? để giúp nó bỏ qua các i ko phải là số bắt đầu vì tý nữa ở dưới các số ko phải số bắt đầu sẽ
+// được duyệt và tính vào length biến tạm thời mất rồi. sau khi đi qua thằng if tức số đó là
+// số bắt đầu của một chuỗi ta cộng biến lenght=1 vì số đó là 1 chuỗi có độ dài là 1 , tiếp tục ta kiểm tra
+// trong vòng while nếu có số đứng sau tức là ví dụ 1 là số bắt đầu , khi đó nó sẽ kiểm tra 1+1 tức là số 2
+// có tồn tại trong set ko nếu có tồn tài cộng length vì 2 là chuỗi liên tục cùa 1 , cứ thế cho đến khi ko thỏa mãn
+// ,ta sử dụng một if để so sánh với kỷ lục nếu nó lớn hơn ta cập nhật kỷ lục và chuyển tiếp i với length đc reset=0 và
+// i sẽ được tua các các số đã nằm trong 1 chuỗi đã đc update kỷ lục trc đó nhé
