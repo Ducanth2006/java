@@ -1,14 +1,14 @@
 package CodePtit;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class sinhHoanVi {
-    public static boolean sinhHoanViKeTiep(int[]a){
+public class hoanViNguoc {
+    private static boolean sinhHoanVi(int [] a){
         int n=a.length;
         int k=-1;
         for(int i=n-2;i>-1;i--){
-            if(a[i]<a[i+1]){
+            if(a[i]>a[i+1]){
                 k=i;
                 break;
             }
@@ -16,7 +16,7 @@ public class sinhHoanVi {
         if(k==-1) return false;
         int l=-1;
         for(int j=n-1;j>k;j--){
-            if(a[k]<a[j]){
+            if(a[j]<a[k]){
                 l=j;
                 break;
             }
@@ -27,49 +27,39 @@ public class sinhHoanVi {
         int left=k+1;
         int right=n-1;
         while(left<right){
-            int t=a[left];
+            int gan=a[left];
             a[left]=a[right];
-            a[right]=t;
-            left++;right--;
-        }
-        return true;
-    }
-    private static boolean checkMangGiongNhau(int [] a,int [] b){
-        for(int i=0;i<a.length;i++){
-            if(a[i]!=b[i])return false;
+            a[right]=gan;
+            left++;
+            right--;
         }
         return true;
     }
 
     public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
+        Scanner sc= new Scanner(System.in);
         int test=sc.nextInt();
         for(int t=0;t<test;t++){
             int n=sc.nextInt();
-            int [] mangInit= new int[n];
-            for(int i=0;i<n;i++){
-                mangInit[i]=sc.nextInt();
-            }
             int [] mang=new int[n];
-            int tam=1;
+            int tam=n;
             for(int i=0;i<n;i++){
                 mang[i]=tam;
-                tam++;
+                tam--;
             }
-            int stt=0;
             while(true){
-                stt++;
-
-                if(checkMangGiongNhau(mangInit,mang)){
-                    System.out.println(stt);
-                    break;
+                for(int i:mang){
+                    System.out.print(i);
                 }
-
-                if(!sinhHoanViKeTiep(mang)){
+                System.out.print(" ");
+                if(!sinhHoanVi(mang)){
                     break;
                 }
             }
+            System.out.println();
+
 
         }
     }
+
 }
