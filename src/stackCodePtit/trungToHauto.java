@@ -18,7 +18,25 @@ public class trungToHauto {
     private static String solve(String []arr){
         Deque<String> deque= new ArrayDeque<>();
         StringBuilder sb=new StringBuilder();
-
+        for(String x:arr){
+            if(!isOper(x)&&!x.equals(")")&&!x.equals("(")) sb.append(x);
+            else if(x.equals("(")) deque.push(x);
+            else if(x.equals(")")) {
+                while(!deque.isEmpty()&&!deque.peek().equals("(")){
+                    sb.append(deque.pop());
+                }
+                deque.pop();
+            }
+            else {
+                while(!deque.isEmpty()&&compare(deque.peek())>=compare(x)){
+                    sb.append(deque.pop());
+                }
+                deque.push(x);
+            }
+        }
+        while(!deque.isEmpty()){
+            sb.append(deque.pop());
+        }
         return sb.toString();
     }
 
