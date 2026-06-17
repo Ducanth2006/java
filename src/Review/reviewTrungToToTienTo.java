@@ -1,39 +1,42 @@
-package stackCodePtit;
+package Review;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Scanner;
 
-public class trungToHauto {
-    private final static Deque<Character> deque= new ArrayDeque<>();
-    private static boolean isOper(String x){
-        return (x.equals("*")||x.equals("+")||x.equals("-")||x.equals("/")||x.equals("^"));
+public class reviewTrungToToTienTo {
+    private static final Deque<Character> deque= new ArrayDeque<>();
+    private static boolean isOper(char  x){
+        if(x=='+'||x=='-'||x=='*'||x=='/'||x=='^') return true;
+        else return false;
     }
     private static int compare(char x){
         if(x=='^') return 3;
         else if(x=='*'||x=='/') return 2;
-        else if (x=='+'||x=='-') return 1;
+        else if(x=='+'||x=='-') return 1;
         else return 0;
     }
     private static void solve(String x){
         deque.clear();
-        StringBuilder sb= new StringBuilder();
-        for(int i=0;i<x.length();i++){
+        StringBuilder sb=new StringBuilder();
+        for(int i=x.length()-1;i>-1;i--){
             char ch=x.charAt(i);
-            // gặp chữ cái bth
-            if(!isOper(String.valueOf(ch))&&ch!=')'&&ch!='(') sb.append(ch);
-            // gặp cái ngoặc ( này
-            else if(ch=='('){
-                deque.push(ch);
+            if(!isOper(ch)&&ch!=')'&&ch!='('){
+                sb.append(ch);
             }
             else if(ch==')'){
-                while(!deque.isEmpty()&&deque.peek()!='('){
+                deque.push(ch);
+            }
+            else if(ch=='('){
+                while(!deque.isEmpty()&&deque.peek()!=')'){
                     sb.append(deque.pop());
                 }
                 deque.pop();
             }
-            else{
-                while(!deque.isEmpty()&&compare(deque.peek())>=compare(ch)){
+            else {
+                while(!deque.isEmpty()&&(
+                        (ch=='^'&&compare(deque.peek())>=compare(ch))||(ch!='^'&&compare(deque.peek())>compare(ch))
+                )){
                     sb.append(deque.pop());
                 }
                 deque.push(ch);
@@ -42,8 +45,7 @@ public class trungToHauto {
         while(!deque.isEmpty()){
             sb.append(deque.pop());
         }
-        System.out.println(sb);
-
+        System.out.println(sb.reverse());
     }
 
     public static void main(String[] args) {
@@ -52,7 +54,6 @@ public class trungToHauto {
         while(t-->0){
             String x=sc.next();
             solve(x);
-
         }
     }
 }
