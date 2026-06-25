@@ -1,0 +1,8 @@
+ta có dùng deque với stack như sau
+Deque =[1,2,3,4]
+chỉ có mỗi cái khi in ra nó bị ngược thôi :)))
+với stack thì deque coi đỉnh là bên trái tức 1 và đáy là 4 vậy theo cơ chế lifo
+vào cuối ra đầu thì deque có push() tức thêm vào đỉnh , pop()và peek thì lấy từ đỉnh  ra đảm bảo lifo
+
+// với deque dùng với queue thì lại ngon luôn cớ chế fifo vào đầu ra đầu
+ta có offer tức thêm vào đáy , còn poll() và peek() lấy ở đỉnh ra đảm bảo fifo chưa

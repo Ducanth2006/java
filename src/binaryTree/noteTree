@@ -1,0 +1,26 @@
+// 1. PREORDER (Gốc -> Trái -> Phải)
+public static void preorder(Node root) {
+    if (root != null) {
+        System.out.print(root.value); // In Gốc trước
+        preorder(root.left);          // Đi sang Trái
+        preorder(root.right);         // Đi sang Phải
+    }
+}
+
+// 2. INORDER (Trái -> Gốc -> Phải) in ra trung tố
+public static void inorder(Node root) {
+    if (root != null) {
+        inorder(root.left);           // Đi sang Trái
+        System.out.print(root.value); // In Gốc ở giữa
+        inorder(root.right);          // Đi sang Phải
+    }
+}
+
+// 3. POSTORDER (Trái -> Phải -> Gốc)
+public static void postorder(Node root) {
+    if (root != null) {
+        postorder(root.left);          // Đi sang Trái
+        postorder(root.right);         // Đi sang Phải
+        System.out.print(root.value);  // In Gốc sau cùng
+    }
+}

@@ -1,0 +1,5 @@
+Thêm vào cuối: deque.offer(e);
+
+Lấy ra ở đầu: int data = deque.poll();
+
+Xem ở đầu: int data = deque.peek();
